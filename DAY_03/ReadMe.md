@@ -1,4 +1,4 @@
-Absolutely. I would combine the **continued CPU troubleshooting from Day 2** with the **technical topics you studied on Day 3**, so the report clearly separates *practical observation* from *learning and study*.
+
 
 # Day 3 – Continued Network Troubleshooting and Technical Learning
 

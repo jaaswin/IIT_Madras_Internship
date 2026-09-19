@@ -1,0 +1,50 @@
+services:
+
+  # --------------------------------
+  # MACHINE 3 - SERVER
+  # --------------------------------
+  machine3:
+    build: ./server
+    container_name: machine3-server
+
+    ports:
+      - "8080:5000"
+
+    networks:
+      - ddos-lab
+
+
+  # --------------------------------
+  # MACHINE 1 - LEGITIMATE CLIENT
+  # --------------------------------
+  machine1:
+    image: python:3.12-slim
+    container_name: machine1-client
+
+    command: ["sleep", "infinity"]
+
+    networks:
+      - ddos-lab
+
+
+  # --------------------------------
+  # MACHINE 2 - TRAFFIC GENERATOR
+  # --------------------------------
+  machine2:
+    image: python:3.12-slim
+    container_name: machine2-attacker
+
+    command: ["sleep", "infinity"]
+
+    networks:
+      - ddos-lab
+
+
+# --------------------------------
+# CONTROLLED LAB NETWORK
+# --------------------------------
+
+networks:
+
+  ddos-lab:
+    driver: bridge

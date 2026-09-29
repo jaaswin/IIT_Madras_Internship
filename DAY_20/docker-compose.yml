@@ -1,0 +1,31 @@
+services:
+
+  server:
+    build:
+      context: ./server
+    ports:
+      - "8081:80"
+    networks:
+      - rce-lab-network
+
+  client:
+    build:
+      context: ./client
+    command: ["sleep", "infinity"]
+    networks:
+      - rce-lab-network
+    depends_on:
+      - server
+
+  attacker:
+    build:
+      context: ./attacker
+    command: ["sleep", "infinity"]
+    networks:
+      - rce-lab-network
+    depends_on:
+      - server
+
+networks:
+  rce-lab-network:
+    driver: bridge
